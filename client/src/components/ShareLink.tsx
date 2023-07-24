@@ -11,6 +11,7 @@ import LinerProgress from '@mui/material/LinearProgress'
 
 interface PropsType {
   link: string;
+  linkForEmail: string;
 }
 
 interface EmailHistoryItem {
@@ -23,7 +24,7 @@ interface formDataType {
   receiverEmail: string;
 }
 
-const ShareLink = ({ link }: PropsType) => {
+const ShareLink = ({ link, linkForEmail }: PropsType) => {
   const [copy] = useCopyToClipboard();
   const [isLoading, setIsLoading] = useState(false);
   const [emailHistory, setEmailHistory] = useState<EmailHistoryItem[]>([]);
@@ -65,7 +66,7 @@ const ShareLink = ({ link }: PropsType) => {
 
       setIsLoading(true);
       await axios.post( url || `http://localhost:5000/file/send`, {
-        link,
+        linkForEmail,
         senderEmail,
         receiverEmail,
       });

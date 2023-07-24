@@ -246,7 +246,7 @@ const DragZone = () => {
         />
       </div>
 
-      {link && !isloading && !file && <ShareLink link={linkForEmail} />}
+      {link && !isloading && !file && <ShareLink linkForEmail={linkForEmail} link={link} />}
 
       <div className={`text-center mt-4 ${!file && "hidden"}`}>
         {!isloading ? (
