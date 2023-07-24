@@ -120,7 +120,7 @@ const DragZone = () => {
         `${downloadUrl}?${uploadTaskState?.totalBytes}`
       );
       setLink(downloadUrl)
-      setLinkForEmail(`${import.meta.env.VITE_APP_BASE_URL || 'http://localhost:5000'}/file/${encodedUrl}`);
+      setLinkForEmail(encodedUrl);
       toast.success("uploaded successfully");
       setFileExt("success");
     } catch (err: any) {
