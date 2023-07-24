@@ -33,7 +33,7 @@ router.post("/send", async (req, res) => {
       return res.status(422).json({ error: "Missing required fields" });
     }
 
-    const url = decodeURIComponent(link);
+    const url = decodeURIComponent(linkForEmail);
     const URLInstance = url.split('?')
     const size = URLInstance.pop()
     const fileLink = URLInstance.join('?')
