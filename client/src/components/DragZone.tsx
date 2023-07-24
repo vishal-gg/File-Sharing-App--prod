@@ -10,6 +10,7 @@ import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 const DragZone = () => {
   const [file, setFile] = useState<File | null>(null);
   const [link, setLink] = useState("");
+  const [linkForEmail, setLinkForEmail] = useState('');
   const [isloading, setIsloading] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dropZoneRef = useRef<HTMLInputElement | null>(null);
@@ -118,7 +119,8 @@ const DragZone = () => {
       const encodedUrl = encodeURIComponent(
         `${downloadUrl}?${uploadTaskState?.totalBytes}`
       );
-      setLink(`${import.meta.env.VITE_APP_BASE_URL || 'http://localhost:5000'}/file/${encodedUrl}`);
+      setLink(downloadUrl)
+      setLinkForEmail(`${import.meta.env.VITE_APP_BASE_URL || 'http://localhost:5000'}/file/${encodedUrl}`);
       toast.success("uploaded successfully");
       setFileExt("success");
     } catch (err: any) {
@@ -244,7 +246,7 @@ const DragZone = () => {
         />
       </div>
 
-      {link && !isloading && !file && <ShareLink link={link} />}
+      {link && !isloading && !file && <ShareLink link={linkForEmail} />}
 
       <div className={`text-center mt-4 ${!file && "hidden"}`}>
         {!isloading ? (

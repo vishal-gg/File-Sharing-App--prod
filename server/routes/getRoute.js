@@ -1,28 +1,28 @@
 const express = require("express");
 const router = express.Router();
 const sendLinkViaEmail = require("../services/nodeMailer");
-const { expiresIn, parseFileSize } = require("../utils/calculations");
+const { parseFileSize } = require("../utils/calculations");
 
-// download using url link
-router.get("/:url", async (req, res) => {
-  try {
-    const url = decodeURIComponent(req.params.url);
-    const URLInstance = url.split('?')
-    const size = URLInstance.pop()
-    const link = URLInstance.join('?')
-    const fileName = new URL(url).pathname.split('/').pop();
-    const { downloadSize, unit } = parseFileSize(Number(size));
-      res.render("downloadPage", {
-        name: fileName,
-        size: { downloadSize, unit },
-        link: link
-      });
+// // download using url link
+// router.get("/:url", async (req, res) => {
+//   try {
+//     const url = decodeURIComponent(req.params.url);
+//     const URLInstance = url.split('?')
+//     const size = URLInstance.pop()
+//     const link = URLInstance.join('?')
+//     const fileName = new URL(url).pathname.split('/').pop();
+//     const { downloadSize, unit } = parseFileSize(Number(size));
+//       res.render("downloadPage", {
+//         name: fileName,
+//         size: { downloadSize, unit },
+//         link: link
+//       });
 
-  } catch (err) {
-    console.log(err);
-    res.status(400).json({ error: err.message || "something went wrong" });
-  }
-});
+//   } catch (err) {
+//     console.log(err);
+//     res.status(400).json({ error: err.message || "something went wrong" });
+//   }
+// });
 
 //download using email
 router.post("/send", async (req, res) => {
