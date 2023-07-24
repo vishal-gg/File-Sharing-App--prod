@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    color-scheme: light dark;
+}
+img,
+svg {
+    max-width: 100%;
+    display: block;
+}
+body {
+    background-color: #eeeeee;
+}
+
+main {
+    width: min(768px, 100% - 4rem);
+    margin-inline: auto;
+    padding: 2rem 0;
+}
+
+.animateProgressBar {
+    animation: progressBar ease-in-out 2s infinite;
+    scale: 1.5;
+}
+@keyframes progressBar {
+    from {
+        transform: translateX(-130%);
+    }
+    to {
+        transform: translateX(130%);
+    }
+}
