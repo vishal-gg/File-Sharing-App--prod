@@ -70,6 +70,7 @@ const ShareLink = ({ link, linkForEmail }: PropsType) => {
         senderEmail,
         receiverEmail,
       });
+      
       setIsLoading(false);
       setStatus("success");
       toast.success("Email sent");

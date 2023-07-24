@@ -27,9 +27,9 @@ const { parseFileSize } = require("../utils/calculations");
 //download using email
 router.post("/send", async (req, res) => {
   try {
-    const {link, senderEmail, receiverEmail } = req.body;
+    const {linkForEmail, senderEmail, receiverEmail } = req.body;
 
-    if (!link, !senderEmail || !receiverEmail) {
+    if (!linkForEmail, !senderEmail || !receiverEmail) {
       return res.status(422).json({ error: "Missing required fields" });
     }
 
